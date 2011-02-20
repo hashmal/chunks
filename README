@@ -1,0 +1,44 @@
+
+ / |_| | | |\| |/ (
+ \ | | |_| | | |\  )
+
+
+Chunks is a minimalist CSS layout system.
+
+* Only layout, no typography, reset or forms.
+* Can be used for fluid layouts.
+* Based on divisions, not on a grid.
+* Less than 500 octets, a very small footprint on your bandwidth usage.
+* Requires no ".last", ".lastUnit" or ".omega" rule. Leads to cleaner HTML.
+* Tests are not showcase pages, but tests.
+
+
+Core Rules
+----------
+
+### .Wrapper
+
+### .Chunk
+
+### .d
+
+### .by2, .by3, .by4, .by5
+
+### .x2, .x3, .x4
+
+
+Utility Rules
+-------------
+
+### .cf
+
+### .hidden
+
+
+Browser Support
+---------------
+
+Works perfectly in Chrome, Firefox, Safari, Opera, and probably others.
+It MAY work in IE, I don't have any machine capable of running it. If you want
+to help, you can check the tests (test.html), make changes when appropriate,
+and send me a pull request on GitHub.

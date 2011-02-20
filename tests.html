@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Chunks - Tests</title>
+
+	<!-- THE CSS FILE BEING TESTED IS: -->
+	<link rel="stylesheet" href="chunks.css" type="text/css" charset="utf-8"/>
+
+	<!-- THE FOLLOWING CSS RULES ARE ONLY USED FOR THE TESTS -->
+	<style type="text/css" media="screen">
+	.T-sandbox {
+		background-image: url(data:image/png,%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%10%00%00%00%10%01%03%00%00%00%25%3Dm%22%00%00%00%03sBIT%08%08%08%DB%E1O%E0%00%00%00%06PLTE%CC%CC%CC%FF%FF%FF%D3%8D%15v%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%D2%DD~%FC%00%00%00%16tEXtCreation%20Time%0017%2F02%2F11%D3%C5%10%2C%00%00%00%1CtEXtSoftware%00Adobe%20Fireworks%20CS4%06%B2%D3%A0%00%00%00%10IDAT%08%99c%60%F8%CF%80%15%E1%10%06%00~%BF%0F%F1%7DE%19%92%00%00%00%00IEND%AEB%60%82);
+		border: 3px dotted red;
+		margin-bottom: 20px;
+		position: relative;
+	}
+	.T-sandbox:after {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		visibility: hidden;
+	}
+	.T-desc { font-size: x-small; }
+	</style>
+</head>
+<body>
+	<p>
+		This document is used to test the behavior of <strong>Chunks</strong>.
+		As it is (unfortunately) not feasible to automatically test the rules,
+		tests must be validated manually.
+	</p>
+
+	<p>
+		For each test:
+	</p>
+
+	<ol>
+		<li>
+			Read the description and text contained in the test.
+		</li>
+		<li>
+			Observe the test appearance.
+		</li>
+		<li>
+			If the test is displayed in accordance with the description, the
+			test passes. Otherwise, it fails.
+		</li>
+	</ol>
+
+	<p>
+		Ideally, tests should be run in every browser.
+	</p>
+
+	<div class="T-sandbox" style="width: 50%;">
+		<em>
+			Each individual test is contained in a box with red dotted borders
+			like this one.
+		</em>
+	</div>
+
+	<h2>.Wrapper</h2>
+
+	<div class="T-desc">Must not be wider than 950 pixels</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray;">
+			When the page is larger than 950px, this gray block should be
+			950px wide.<br/>
+			Otherwise, it should be as wide as the page (Resize the browser
+			to check).
+		</div>
+	</div>
+
+	<div class="T-desc">Must have equal left and right margins (centered)</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray; width: 250px;">
+			This gray block should be centered, but this text should not.
+		</div>
+	</div>
+
+	<div class="T-desc">Must wrap floated elements</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray;">
+			<div style="float: left; width: 150px;background-color: cyan;">
+				This (floated) cyan block should be contained entirely in a
+				gray block.
+			</div>
+		</div>
+	</div>
+
+	<div class="T-desc">Must have a top margin</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray;">
+			&uarr; There should be some blank space above. &uarr;
+		</div>
+	</div>
+
+	<div class="T-desc">Must have a bottom margin</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray;">
+			&darr; There should be some blank space below. &darr;
+		</div>
+	</div>
+
+	<div class="T-desc">Must have left padding</div>
+	<div class="T-sandbox">
+		<div class="Wrapper" style="background-color: gray;">
+			&larr; There should be 5px between the arrow and the border of the
+			block.
+		</div>
+	</div>
+
+	<div class="T-desc">Must have right padding</div>
+	<div class="T-sandbox" style="text-align: right;">
+		<div class="Wrapper" style="background-color: gray;">
+			There should be 5px between the arrow and the border of the
+			block. &rarr;
+		</div>
+	</div>
+
+	<h2>.Chunk</h2>
+
+	<div class="T-desc">Must not have any margins when alone</div>
+	<div class="T-sandbox">
+		<div class="Chunk" style="background-color: gray;">
+			There shouldn't be margins around this gray block.
+		</div>
+	</div>
+
+	<div class="T-desc">Must have margins between chunks</div>
+	<div class="T-sandbox">
+		<div class="Chunk" style="background-color: gray;">
+			&darr; There should be some blank space here. &darr;
+		</div>
+		<div class="Chunk" style="background-color: gray;">
+			&uarr; There should be some blank space here. &uarr;
+		</div>
+	</div>
+
+	<div class="T-desc">Must wrap floated elements</div>
+	<div class="T-sandbox">
+		<div class="Chunk" style="background-color: gray;">
+			<div style="float: left; width: 150px;background-color: cyan;">
+				This (floated) cyan block should be contained entirely in a
+				gray block.
+			</div>
+		</div>
+	</div>
+
+	<h3>.Chunk .d .by2</h3>
+
+	<div class="T-desc">Must be displayed as a two columns layout</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by2" style="background-color: gray;">
+				This gray block should be on the left, taking no more than
+				half the width.<br/>
+				There should be a gutter on the right. &rarr;
+			</div>
+
+			<div class="Chunk d by2" style="background-color: gray;">
+				This gray block should be on the right, taking no more than
+				half the width.<br/>
+				Its top should be aligned with the top of the left block.
+			</div>
+		</div>
+	</div>
+
+	<h3>.Chunk .d .by3</h3>
+
+	<div class="T-desc">Must be displayed as a three columns layout</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by3" style="background-color: gray;">
+				This gray block should be on the left, taking no more than
+				a third of the width.<br/>
+				There should be a gutter on the right. &rarr;
+			</div>
+
+			<div class="Chunk d by3" style="background-color: gray;">
+				This gray block should be in the center, taking no more than
+				a third of the width.<br/>
+				There should be a gutter on the right. &rarr;<br/>
+				Its top should be aligned with the top of the left block.
+			</div>
+
+			<div class="Chunk d by3" style="background-color: gray;">
+				This gray block should be on the right, taking no more than
+				a third of the width.<br/>
+				Its top should be aligned with the top of the left block.
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by3 .x2</h4>
+
+	<div class="T-desc">Must be displayed as a 2/3 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by3 x2" style="background-color: gray;">
+				This gray block should be ~2/3 wide, with a margin on the
+				right.
+			</div>
+
+			<div class="Chunk d by3" style="background-color: cyan;">
+				Control block (on the right).
+			</div>
+		</div>
+	</div>
+
+	<h3>.Chunk .d .by4</h3>
+
+	<p>
+		From now on, column behavior is assumed to be similar to previous
+		ones. Blocks must appear in correct order.
+	</p>
+
+	<div class="T-desc">Must be displayed as a four columns layout</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by4" style="background-color: gray;">
+				1
+			</div>
+
+			<div class="Chunk d by4" style="background-color: gray;">
+				2
+			</div>
+
+			<div class="Chunk d by4" style="background-color: gray;">
+				3
+			</div>
+
+			<div class="Chunk d by4" style="background-color: gray;">
+				4
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by4 .x2</h4>
+
+	<div class="T-desc">Must be displayed as a 1/2 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by4 x2" style="background-color: gray;">
+				This gray block must be ~1/2 wide with a right margin.
+			</div>
+
+			<div class="Chunk d by4" style="background-color: cyan;">
+				Control block 1.
+			</div>
+
+			<div class="Chunk d by4" style="background-color: cyan;">
+				Control block 2.
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by4 .x3</h4>
+
+	<div class="T-desc">Must be displayed as a 3/4 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by4 x3" style="background-color: gray;">
+				This gray block must be ~3/4 wide with a right margin.
+			</div>
+
+			<div class="Chunk d by4" style="background-color: cyan;">
+				Control block.
+			</div>
+		</div>
+	</div>
+
+	<h3>.Chunk .d .by5</h3>
+
+	<div class="T-desc">Must be displayed as a five columns layout</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by5" style="background-color: gray;">
+				1
+			</div>
+
+			<div class="Chunk d by5" style="background-color: gray;">
+				2
+			</div>
+
+			<div class="Chunk d by5" style="background-color: gray;">
+				3
+			</div>
+
+			<div class="Chunk d by5" style="background-color: gray;">
+				4
+			</div>
+
+			<div class="Chunk d by5" style="background-color: gray;">
+				5
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by5 .x2</h4>
+
+	<div class="T-desc">Must be displayed as a 2/5 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by5 x2" style="background-color: gray;">
+				1
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block 1.
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block 2.
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block 3.
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by5 .x3</h4>
+
+	<div class="T-desc">Must be displayed as a 3/5 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by5 x3" style="background-color: gray;">
+				1
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block 1.
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block 2.
+			</div>
+		</div>
+	</div>
+
+	<h4>.Chunk .d .by5 .x4</h4>
+
+	<div class="T-desc">Must be displayed as a 4/5 column</div>
+	<div class="T-sandbox">
+		<div class="Chunk">
+			<div class="Chunk d by5 x4" style="background-color: gray;">
+				1
+			</div>
+
+			<div class="Chunk d by5" style="background-color: cyan;">
+				Control block.
+			</div>
+		</div>
+	</div>
+
+	<h2>.cf</h2>
+
+	<div class="T-desc">Must wrap floated elements</div>
+	<div class="T-sandbox">
+		<div class="cf" style="background-color: gray;">
+			<div style="float: left; width: 150px;background-color: cyan;">
+				This (floated) cyan block should be contained entirely in a
+				gray block.
+			</div>
+		</div>
+	</div>
+
+	<h2>.hidden</h2>
+
+	<div class="T-desc">Must be hidden, no blank space</div>
+	<div class="T-sandbox">
+		<div class="hidden">
+			<span style="color: red;">
+				This block should be hidden.
+			</span>
+		</div>
+	</div>
+</body>
+</html>
